@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "718890174635",
+    "firebase_url": "https://chat-uea.firebaseio.com",
+    "project_id": "chat-uea",
+    "storage_bucket": "chat-uea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718890174635:android:62af67dd2784e691",
+        "android_client_info": {
+          "package_name": "br.edu.uea.estsiv031.chatuea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718890174635-vn8d803ihd9optu06vpso0ejj1d39fta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.uea.estsiv031.chatuea",
+            "certificate_hash": "8356ddc54ee4c462e74bb6b524f1e475533b1b8e"
+          }
+        },
+        {
+          "client_id": "718890174635-ll17o1p636sirf0q94he0psurjji8eqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA12icbeQFJ1pcTOB1wZcIh8mtXugcf2ug"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718890174635-ll17o1p636sirf0q94he0psurjji8eqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
