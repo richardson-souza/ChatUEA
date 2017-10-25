@@ -23,6 +23,7 @@ public class Usuario {
 
     public Usuario() {
         rsa = new RSA();
+        rsa.gerarChaves();
         this.e = rsa.getE().toString();
         this.d = rsa.getD().toString();
         this.n = rsa.getN().toString();

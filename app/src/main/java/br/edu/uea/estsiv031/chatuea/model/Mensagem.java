@@ -8,6 +8,7 @@ public class Mensagem {
 
     private String idUsuario;
     private String mensagem;
+    private String mensagemCifrada;
 
     public Mensagem() {
     }
@@ -26,5 +27,13 @@ public class Mensagem {
 
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
+    }
+
+    public String getMensagemCifrada() {
+        return mensagemCifrada;
+    }
+
+    public void setMensagemCifrada(String mensagemCifrada) {
+        this.mensagemCifrada = mensagemCifrada;
     }
 }

@@ -12,22 +12,23 @@ public class RSA {
     private BigInteger p, q, n, m, d, e = new BigInteger("3");
     static final int bitlen = 2048;
 
-    public RSA(){
+    public RSA(){}
+
+    public void gerarChaves(){
+
         SecureRandom r = new SecureRandom();
 
-        this.p = new BigInteger(bitlen / 2, 100, r);
-        this.q = new BigInteger(bitlen / 2, 100, r);
+        setP(new BigInteger(bitlen / 2, 100, r));
+        setQ(new BigInteger(bitlen / 2, 100, r));
 
-        this.n = p.multiply(q);
+        setN(getP(),getQ());
 
-        this.m = (p.subtract(BigInteger.ONE))
-                .multiply(q.subtract(BigInteger.ONE));
+        setM(getP().subtract(BigInteger.ONE), getQ().subtract(BigInteger.ONE));
 
-        //this.e = new BigInteger("3");
-        while(m.gcd(e).intValue() > 1)
-            this.e = e.add(new BigInteger("2"));
+        setE(getM());
 
-        this.d = e.modInverse(m);
+        setD(getE(),getM());
+
     }
 
     public BigInteger getP() {
@@ -81,7 +82,7 @@ public class RSA {
             this.e = getE().add(new BigInteger("2"));
     }
 
-    public String encritar(String e, String n, String msg){
+    public String encriptar(String e, String n, String msg){
 
         return new BigInteger(msg.getBytes()).modPow(new BigInteger(e), new BigInteger(n)).toString();
 

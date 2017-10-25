@@ -22,6 +22,7 @@ import br.edu.uea.estsiv031.chatuea.adapter.MensagemAdapter;
 import br.edu.uea.estsiv031.chatuea.config.ConfiguracaoFirebase;
 import br.edu.uea.estsiv031.chatuea.helper.Base64Custom;
 import br.edu.uea.estsiv031.chatuea.helper.Preferencias;
+import br.edu.uea.estsiv031.chatuea.helper.RSA;
 import br.edu.uea.estsiv031.chatuea.model.Mensagem;
 
 public class ConversaActivity extends AppCompatActivity {
@@ -45,8 +46,6 @@ public class ConversaActivity extends AppCompatActivity {
     //dados remetente
     private String idUsuarioRemetente;
 
-
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +65,8 @@ public class ConversaActivity extends AppCompatActivity {
         if( extra != null ){
             nomeUsuarioDestinatario = extra.getString("nome");
             String emailDestinatario = extra.getString("email");
-            //eUsuarioDestinatario = extra.getString("e");
-            //nUsuarioDestinatario = extra.getString("n");
+            eUsuarioDestinatario = extra.getString("e");
+            nUsuarioDestinatario = extra.getString("n");
 
             idlUsuarioDestinatario = Base64Custom.codificarBase64( emailDestinatario );
         }
@@ -77,15 +76,9 @@ public class ConversaActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         setSupportActionBar(toolbar);
 
-        //Mosnta listView e adapter
+        //Monta listView e adapter
         mensagens = new ArrayList<>();
         adapter = new MensagemAdapter(ConversaActivity.this,mensagens);
-
-        /*adapter = new ArrayAdapter(
-                ConversaActivity.this,
-                android.R.layout.simple_list_item_1,
-                mensagens
-        );*/
 
         listView.setAdapter(adapter);
 
@@ -110,7 +103,6 @@ public class ConversaActivity extends AppCompatActivity {
                 }
 
                 adapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -131,8 +123,10 @@ public class ConversaActivity extends AppCompatActivity {
                 }else{
 
                     Mensagem mensagem = new Mensagem();
+                    RSA rsa = new RSA();
                     mensagem.setIdUsuario( idUsuarioRemetente );
                     mensagem.setMensagem( textoMensagem );
+                    mensagem.setMensagemCifrada(rsa.encriptar( eUsuarioDestinatario, nUsuarioDestinatario, textoMensagem ));
 
                     //salvamos mensagem para o remetente
                     Boolean retornoMensagemRemetente = salvarMensagem(idUsuarioRemetente, idlUsuarioDestinatario, mensagem);
@@ -143,6 +137,7 @@ public class ConversaActivity extends AppCompatActivity {
                                 Toast.LENGTH_LONG
                         ).show();
                     }else {
+
                         //salvamos mensagem para o destinatário
                         Boolean retornoMensagemDestinatario = salvarMensagem(idlUsuarioDestinatario, idUsuarioRemetente, mensagem);
                         if (!retornoMensagemDestinatario) {
