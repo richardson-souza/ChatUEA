@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "718890174635",
-    "firebase_url": "https://chat-uea.firebaseio.com",
-    "project_id": "chat-uea",
-    "storage_bucket": "chat-uea.appspot.com"
+    "project_number": "490954050101",
+    "firebase_url": "https://chat-uea-f66e3.firebaseio.com",
+    "project_id": "chat-uea-f66e3",
+    "storage_bucket": "chat-uea-f66e3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:718890174635:android:62af67dd2784e691",
+        "mobilesdk_app_id": "1:490954050101:android:62af67dd2784e691",
         "android_client_info": {
           "package_name": "br.edu.uea.estsiv031.chatuea"
         }
       },
       "oauth_client": [
         {
-          "client_id": "718890174635-vn8d803ihd9optu06vpso0ejj1d39fta.apps.googleusercontent.com",
+          "client_id": "490954050101-kq5ehal2n0fejpp5ibealvkflgdhrabl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.edu.uea.estsiv031.chatuea",
-            "certificate_hash": "8356ddc54ee4c462e74bb6b524f1e475533b1b8e"
+            "certificate_hash": "822ef0fe5d5650fb20dbf1990ffa8e55fab5f1ae"
           }
         },
         {
-          "client_id": "718890174635-ll17o1p636sirf0q94he0psurjji8eqn.apps.googleusercontent.com",
+          "client_id": "490954050101-iuogeav8u331kovpeg3qojso86obbvj9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA12icbeQFJ1pcTOB1wZcIh8mtXugcf2ug"
+          "current_key": "AIzaSyAKk7JM7FtvZOk1veHI0bFKptHnukDeyXs"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "718890174635-ll17o1p636sirf0q94he0psurjji8eqn.apps.googleusercontent.com",
+              "client_id": "490954050101-iuogeav8u331kovpeg3qojso86obbvj9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

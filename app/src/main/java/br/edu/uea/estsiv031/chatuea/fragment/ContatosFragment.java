@@ -116,9 +116,6 @@ public class ContatosFragment extends Fragment {
 
                 startActivity(intent);
 
-
-
-
             }
         });
 
