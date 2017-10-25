@@ -15,24 +15,22 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private RSA chave;
     private String e;
-    private String d;
     private String n;
-    private RSA rsa;
 
 
     public Usuario() {
-        rsa = new RSA();
+        RSA rsa = new RSA();
         rsa.gerarChaves();
-        this.e = rsa.getE().toString();
-        this.d = rsa.getD().toString();
-        this.n = rsa.getN().toString();
+        this.chave = rsa;
+        this.e = chave.getE().toString();
+        this.n = chave.getN().toString();
     }
 
     public void salvar() {
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         referenciaFirebase.child("usuarios").child(getId()).setValue(this);
-
     }
 
     @Exclude
@@ -60,30 +58,12 @@ public class Usuario {
         this.email = email;
     }
 
-    @Exclude
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getE() {
         return e;
     }
 
     public void setE(String e) {
         this.e = e;
-    }
-
-    @Exclude
-    public String getD() {
-        return d;
-    }
-
-    public void setD(String e) {
-        this.d = d;
     }
 
     public String getN() {
@@ -94,4 +74,21 @@ public class Usuario {
         this.n = n;
     }
 
+    @Exclude
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Exclude
+    public RSA getChave() {
+        return chave;
+    }
+
+    public void setChave(RSA chave) {
+        this.chave = chave;
+    }
 }

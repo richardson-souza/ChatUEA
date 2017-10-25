@@ -18,16 +18,17 @@ public class RSA {
 
         SecureRandom r = new SecureRandom();
 
-        setP(new BigInteger(bitlen / 2, 100, r));
-        setQ(new BigInteger(bitlen / 2, 100, r));
+        this.p = new BigInteger(bitlen / 2, 100, r);
+        this.q = new BigInteger(bitlen / 2, 100, r);
 
-        setN(getP(),getQ());
+        this.n = p.multiply(q);
+        this.m = (p.subtract(BigInteger.ONE))
+                .multiply(q.subtract(BigInteger.ONE));
 
-        setM(getP().subtract(BigInteger.ONE), getQ().subtract(BigInteger.ONE));
+        while(getM().gcd(getE()).intValue() > 1)
+            this.e = getE().add(new BigInteger("2"));
 
-        setE(getM());
-
-        setD(getE(),getM());
+        this.d = getE().modInverse(getM());
 
     }
 
@@ -77,7 +78,6 @@ public class RSA {
     }
 
     public void setE(BigInteger m) {
-        this.e = new BigInteger("3");
         while(m.gcd(getE()).intValue() > 1)
             this.e = getE().add(new BigInteger("2"));
     }

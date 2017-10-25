@@ -83,8 +83,10 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuario.setId( identificadorUsuario );
                     usuario.salvar();
 
+                    //Salva a chave privada(D), publica(E) e o (N) no arquivo de preferencias
                     Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
-                    preferencias.salvarDados(identificadorUsuario,usuario.getD(),usuario.getE(),usuario.getN());
+                    preferencias.salvarDados(identificadorUsuario,usuario.getChave().getD().toString(),
+                            usuario.getChave().getE().toString(),usuario.getChave().getN().toString());
 
                     abrirLoginUsuario();
 

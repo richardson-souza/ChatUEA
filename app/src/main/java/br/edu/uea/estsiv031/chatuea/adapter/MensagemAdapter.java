@@ -16,6 +16,7 @@ import java.util.List;
 
 import br.edu.uea.estsiv031.chatuea.R;
 import br.edu.uea.estsiv031.chatuea.helper.Preferencias;
+import br.edu.uea.estsiv031.chatuea.helper.RSA;
 import br.edu.uea.estsiv031.chatuea.model.Mensagem;
 
 /**
@@ -42,9 +43,14 @@ public class MensagemAdapter extends ArrayAdapter<Mensagem> {
         //verifica se a lista esta preenchida
         if(mensagens != null){
 
+            //RSA
+            RSA rsa = new RSA();
+
             //recuperar dados do usuário remetente
             Preferencias preferencias = new Preferencias(context);
             String idUsuarioRemetente = preferencias.getIdentificador();
+            String chavePivada = preferencias.getChavePrivada();
+            String n = preferencias.getN();
 
 
             //inicializa o objeto para a montagem do layout
@@ -62,7 +68,14 @@ public class MensagemAdapter extends ArrayAdapter<Mensagem> {
 
             //recuperando elemento para exibição
             TextView textoMensagem = (TextView) view.findViewById(R.id.tv_mensagem);
-            textoMensagem.setText( mensagem.getMensagem() );
+            textoMensagem.setText( mensagem.getMensagem() + "\n" + mensagem.getMensagemCifrada());
+            if(mensagem.getIdUsuario().equals(idUsuarioRemetente)){
+                textoMensagem.setText( mensagem.getMensagem());
+            }else{
+                //textoMensagem.setText( mensagem.getMensagemCifrada());
+                textoMensagem.setText( rsa.decriptar(chavePivada,n,mensagem.getMensagemCifrada()) );
+            }
+            //textoMensagem.setText(mensagem.getMensagemCifrada());
 
         }
 
