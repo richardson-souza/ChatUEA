@@ -1,4 +1,4 @@
-package br.edu.uea.estsiv031.chatuea.adapter;
+package br.edu.uea.estsiv031.chatuea.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import br.edu.uea.estsiv031.chatuea.R;
+import br.edu.uea.estsiv031.chatuea.adapter.MensagemAdapter;
 import br.edu.uea.estsiv031.chatuea.config.ConfiguracaoFirebase;
 import br.edu.uea.estsiv031.chatuea.helper.Base64Custom;
 import br.edu.uea.estsiv031.chatuea.helper.Preferencias;
@@ -134,10 +135,24 @@ public class ConversaActivity extends AppCompatActivity {
                     mensagem.setMensagem( textoMensagem );
 
                     //salvamos mensagem para o remetente
-                    salvarMensagem(idUsuarioRemetente, idlUsuarioDestinatario, mensagem);
-
-                    //salvamos mensagem para o destinatário
-                    salvarMensagem(idlUsuarioDestinatario, idUsuarioRemetente, mensagem);
+                    Boolean retornoMensagemRemetente = salvarMensagem(idUsuarioRemetente, idlUsuarioDestinatario, mensagem);
+                    if(!retornoMensagemRemetente){
+                        Toast.makeText(
+                                ConversaActivity.this,
+                                "Problema ao enviar mensagem, tente novamente!",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }else {
+                        //salvamos mensagem para o destinatário
+                        Boolean retornoMensagemDestinatario = salvarMensagem(idlUsuarioDestinatario, idUsuarioRemetente, mensagem);
+                        if (!retornoMensagemDestinatario) {
+                            Toast.makeText(
+                                    ConversaActivity.this,
+                                    "Problema ao enviar mensagem para o destinatario, tente novamente!",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
+                    }
 
                     editMensagem.setText("");
 

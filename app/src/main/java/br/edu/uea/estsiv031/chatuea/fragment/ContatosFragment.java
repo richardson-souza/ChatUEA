@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import br.edu.uea.estsiv031.chatuea.R;
 import br.edu.uea.estsiv031.chatuea.adapter.ContatoAdapter;
-import br.edu.uea.estsiv031.chatuea.adapter.ConversaActivity;
+import br.edu.uea.estsiv031.chatuea.activity.ConversaActivity;
 import br.edu.uea.estsiv031.chatuea.config.ConfiguracaoFirebase;
 import br.edu.uea.estsiv031.chatuea.helper.Preferencias;
 import br.edu.uea.estsiv031.chatuea.model.Contato;
